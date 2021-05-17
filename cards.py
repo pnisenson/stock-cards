@@ -7,13 +7,13 @@ from datetime import date, timedelta
 # Create an instance of Flask
 app = Flask(__name__)
 
-# Create public URL for localhost:5000 so phone can access undeployed app
-def start_ngrok():
-	from pyngrok import ngrok
-	url = ngrok.connect(5000).public_url
-	print(url)
+# # Create public URL for localhost:5000 so phone can access undeployed app
+# def start_ngrok():
+# 	from pyngrok import ngrok
+# 	url = ngrok.connect(5000).public_url
+# 	print(url)
 
-start_ngrok()
+# start_ngrok()
 
 @app.route("/")
 def home():
