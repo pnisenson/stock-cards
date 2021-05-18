@@ -39,12 +39,17 @@ hr {
   background-color: lightblue
 }
 
-#carouselExampleControls0{
+/*#carouselExampleControls0{
   margin-top: 10px;
   margin-left: 10px;
 }
 
 #carouselExampleControls1{
+  margin-top: 10px;
+  margin-left: 10px;
+}*/
+
+.slide{
   margin-top: 10px;
   margin-left: 10px;
 }

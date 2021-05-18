@@ -29,13 +29,13 @@ function cardBuild(){
 		var buttonnext = inner.append('button').attr('class', 'carousel-control-next').attr('type','button').attr('data-bs-target',`carouselExampleControls${i}`).attr('data-bs-slide','next')
 		var span_three = buttonnext.append('span').attr('class','carousel-control-next-icon').attr('aria-hidden','true')
 		var span_four = buttonnext.append('span').attr('class','visually-hidden').text('Next')
-		var myCarousel = document.querySelector(`#carouselExampleControls${i}`)
-		var finalcarousel = new bootstrap.Carousel(myCarousel,{
-			interval: 10
-		});
-
+		var idlist = []
+		idlist.push(`#carouselExampleControls${i}`)
 	};
-
+	var myCarousel = document.querySelector(`#carouselExampleControls${i}`)
+	var finalcarousel = new bootstrap.Carousel(myCarousel,{
+		interval: 20
+		});
 };
 
 cardBuild()
