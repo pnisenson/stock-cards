@@ -1,0 +1,30 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  width: 960px;
+  margin-left: 20px;
+  padding-top: 20px;
+  background-color: #4e91cc;
+}
+
+text {
+  font-family: "RamaGothicM-Heavy",Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black",sans-serif;
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 9rem;
+  fill: #fff;
+}
+
+#donut {
+  width: 20rem;
+  height: 20rem;
+  margin: 0 auto;
+}
+
+path.color0 {
+  fill: #1607ec;
+}
+
+path.color1 {
+  fill: rgb(220, 220, 231);
+}
