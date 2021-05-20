@@ -1,0 +1,55 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: auto;
+    width: 960px;
+    margin-left: 20px;
+    padding-top: 20px;
+    background-color: #4e91cc;
+  }
+  
+  text {
+    font-family: "RamaGothicM-Heavy",Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black",sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 9rem;
+    fill: #fff;
+  }
+  /* .container{
+      height: 100%;
+      width: 100%;
+      display:flex;
+  } */
+  #donut1 #donut2 {
+    width: 100px;
+    /* display: inline-block; */
+  }
+  
+  path.color0 {
+    fill: #1607ec;
+  }
+  
+  path.color1 {
+    fill: rgb(220, 220, 231);
+  }
+h6 h3{
+    margin-bottom: -6px;
+    margin-top: -6px;
+    };
+.row{
+    width :100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+
+}
+    /* display:flex; *
+}
+}
+
+.col-md-12{
+    width :100%;
+    /* display:flex;
+    flex-direction: row;
+    justify-content: center; 
+    margin: -6px;
+} */
