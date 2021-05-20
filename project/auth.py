@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
 from . import db
+from flask_login import login_user, logout_user, login_required
 
 auth = Blueprint('auth', __name__)
 
@@ -24,6 +25,7 @@ def login_post():
         return redirect(url_for('auth.login')) # if the user doesn't exist or password is wrong, reload the page
 
     # if the above check passes, then we know the user has the right credentials
+    login_user(user, remember=remember)
     return redirect(url_for('main.profile'))
 
 @auth.route('/signup')
@@ -32,9 +34,14 @@ def signup():
 
 @auth.route('/signup', methods=['POST'])
 def signup_post():
+    print("test")
+    from .csvread import run_file
+    user_dict = run_file()
     email = request.form.get('email')
-    name = request.form.get('name')
-    password = request.form.get('password')
+    user_dict['email'] = email
+    user_dict['name'] = request.form.get('name')
+    user_dict['password'] = generate_password_hash(request.form.get('password'),method='sha256')
+
 
     user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
 
@@ -43,7 +50,7 @@ def signup_post():
     	return redirect(url_for('auth.signup'))
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
+    new_user = User(**user_dict)
 
     # add the new user to the database
     db.session.add(new_user)
@@ -53,4 +60,5 @@ def signup_post():
 
 @auth.route('/logout')
 def logout():
-    return 'Logout'
+    logout_user()
+    return redirect(url_for('main.index'))
