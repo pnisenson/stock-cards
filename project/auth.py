@@ -36,7 +36,8 @@ def signup():
 def signup_post():
     print("test")
     from .csvread import run_file
-    user_dict = run_file()
+    user_dict = {}
+    user_dict['cards'] = run_file()
     email = request.form.get('email')
     user_dict['email'] = email
     user_dict['name'] = request.form.get('name')

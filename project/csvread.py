@@ -8,17 +8,22 @@ def daily_prices():
 	# try for 5 most recent days to cover weekends and unreported days
 	for x in range(5):
 		recent = (date.today()-timedelta(days=x)).strftime("%Y%m%d")
+		# #when running file not in project
+		# filename = f'csv/NYSE_{recent}.csv'
+		#when running file as part of run_file within project
 		filename = f'project/csv/NYSE_{recent}.csv'
 		try:
 			with open(filename) as csv_file:
 				csv_reader = csv.reader(csv_file, delimiter=',')
+				next(csv_reader, None) #skips header
 				for row in csv_reader:
-					stocklist.append(row[0])
-					close.append(row[5])
-			print(recent)
+					if "." not in row[0] and "-" not in row[0]:
+						stocklist.append(row[0])
+						close.append(row[5])
+			# print(stocklist)
 			break
 		except:
-			e = sys.exc_info()[0]
+			e = sys.exc_info()
 			print(e)
 			print(filename)
 			pass
@@ -51,6 +56,6 @@ def run_file():
 	answer = randomizer(stocks, close, usedate)
 	return answer
 
-run_file()
-
+# run_file()
+# daily_prices()
 
