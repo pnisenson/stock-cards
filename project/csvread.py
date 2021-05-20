@@ -66,3 +66,27 @@ def run_file():
 # run_file()
 # daily_prices()
 
+def latest_close(ticker):
+	# try for 5 most recent days to cover weekends and unreported days
+	for x in range(5):
+		recent = (date.today()-timedelta(days=x)).strftime("%Y%m%d")
+		# #when running file not in project
+		# filename = f'csv/NYSE_{recent}.csv'
+		#when running file as part of run_file within project
+		filename = f'project/csv/NYSE_{recent}.csv'
+		try:
+			with open(filename) as csv_file:
+				csv_reader = csv.reader(csv_file, delimiter=',')
+				next(csv_reader, None) #skips header
+				for row in csv_reader:
+					if ticker == row[0]:
+						print(row[5])
+						print(type(row[5]))
+						return round(float(row[5]),2)
+						break
+		except:
+			e = sys.exc_info()
+			print(e)
+			print(filename)
+			pass
+
