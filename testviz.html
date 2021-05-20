@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visualizations</title>
+    <link rel="stylesheet" href="./static/css/stylepro.css">
+    <script src=" http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js ></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+    <script src="http://d3js.org/d3.v6.min.js"></script>
+  </head>
+<body>
+  <div class="container"> 
+    <div class="row">
+        <div class="col-md-12 jumbotron text-center">
+          <h1>Stocks Dashboard</h1>  <br>
+         </div>
+         <div class="col-md-12">
+          <h3 id="headertag"></h3>
+         </div>
+    </div>  
+    <div class = "row">  
+      <div class="col-md-3">
+        <div id="donut1">
+          <h6>GROSS PROFIT<br>&ensp;MARGIN</h6>
+        </div>
+       </div> 
+        <div class="col-md-3">
+        <div id="donut2">
+          <h6>OPERATING EXPENSE<br>&ensp;AVERAGE</h6>
+        </div>
+      </div>
+       <div class="col-md-6">
+        <div id="donut3">
+          <h6>SOME<br>&ensp;AVERAGE</h6>
+        </div>
+       </div> 
+      <div class="row">
+        <div class="col-md-4">
+          <div id="plot1" ></div>
+          <div id="plot2"></div>
+          <div id="plot3"></div>
+        </div> 
+      <div class="col-md-4">
+        <div id="plot4"></div>
+      </div>
+      <div class="col-md-4"> 
+      </div>
+    </div> 
+  </div> 
+   
+    <script src="./static/js/dashboard.js"></script>
+  </div>  
+  </body>
+</html>
