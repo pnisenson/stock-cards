@@ -1,7 +1,63 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome, Anthony!
-</h1>
+<div class="row">
+{% for stock in front %}
+<div class="col-4">
+<!--Carousel Wrapper-->
+<div id="{{stock.id}}" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+  <div class="container">
+    <h4>
+        <b>{{stock.Ticker}} - {{stock.TradeDate}}</b></h4>
+    <p>
+    	Trade Price: {{stock.TradePrice}}<br>
+    	Current Price: {{stock.CurrPrice}}<br>
+    	Gain/Loss: {{stock.Gain}}
+	</p>
+  </div><hr>
+    <div class="container">
+    <b>Company Info</b>
+    <ul>
+        <li>{{stock.Name}}</li>
+    	<li>{{stock.Industry}}</li>
+    	<li>{{stock.Location}}</li>
+    	<li>{{stock.About}}</li>
+    </ul>
+  </div>
+</div>
+<!--Second slide-->
+<div class="carousel-item">
+  <div class="container">
+    <h4>
+        <b>{{stock['Ticker']}} - {{stock['TradeDate']}}</b></h4>
+    <p>
+        Stock Data
+    </p>
+  </div>
+  </div>
+  <!--Third slide-->
+<div class="carousel-item">
+  <div class="container">
+    <h4>
+        <b>{{stock['Ticker']}} - {{stock['TradeDate']}}</b></h4>
+    <p>
+        Financial Data
+    </p>
+  </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#{{stock.id}}" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#{{stock.id}}" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
 {% endblock %}

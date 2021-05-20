@@ -1,5 +1,6 @@
 import csv, sys
 from datetime import date, timedelta, datetime
+import requests
 
 
 def daily_prices():
@@ -33,21 +34,27 @@ def daily_prices():
 def randomizer(stocklist, close, day):
 	from numpy.random import default_rng # use to only select each stock once (no duplicates)
 	rng = default_rng()
-	cards = rng.choice(len(stocklist), size=5, replace=False)
+	cards = rng.choice(len(stocklist), size=50, replace=False)
 	newdate = datetime.strptime(day, "%Y%m%d").strftime("%m/%d/%Y")
 	all_cards = []
-	# card_dict = {}
-	# card_list = ['one', 'two', 'three', 'four', 'five']
-	for x in range(5):
-		card_list = {}
-		card_list['Ticker'] = stocklist[cards[x]]
-		card_list['TradePrice'] = close[cards[x]]
-		card_list['TradeDate'] = newdate
-		all_cards.append(card_list)
-		# card_dict[f'card_{card_list[x]}_tick'] = stocklist[cards[x]]
-		# card_dict[f'card_{card_list[x]}_price'] = close[cards[x]]
-		# card_dict[f'card_{card_list[x]}_date'] = newdate
-	# return card_dict
+	x = 0
+	# for x in range(50):
+	while len(all_cards) < 5:
+		ticker = stocklist[cards[x]]
+		url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={ticker}&apikey=LLUWTSXUDXC38JV1'
+		try:
+			response = requests.get(url).json()
+			response['Name']
+			print(response['Name'])
+			card_list = {}
+			card_list['Ticker'] = ticker
+			card_list['TradePrice'] = close[cards[x]]
+			card_list['TradeDate'] = newdate
+			all_cards.append(card_list)
+			x += 1
+		except:
+			x += 1
+			pass
 	return all_cards
 
 def run_file():
