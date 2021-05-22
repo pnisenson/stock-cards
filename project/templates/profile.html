@@ -60,4 +60,9 @@
 </div>
 {% endfor %}
 </div>
+<script type="text/javascript">
+var counts = {{ test|tojson }};
+console.log(counts) 
+</script>
+<script type="text/javascript" src="../static/js/test.js"></script>
 {% endblock %}

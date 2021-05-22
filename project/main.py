@@ -24,11 +24,13 @@ def profile():
 			card_info["id"] = f"carouselExampleControls{stockcount}"
 			card_info["Ticker"] = stock["Ticker"]
 			card_info["TradeDate"] = stock["TradeDate"]
-			card_info["TradePrice"] = stock["TradePrice"]
+			card_info["TradePrice"] = round(float(stock["TradePrice"]),2)
+			card_info["Gain"] = round(round(float(card_info["CurrPrice"]),2) - round(float(card_info["TradePrice"]),2),2)
 			front.append(card_info)
 			stockcount +=1
 		print(front)
-		return render_template("profile.html", front = front)
+		test = ['GE', "IBM", 'VNTR', 'AA', 'GWB']
+		return render_template("profile.html", front = front, test = test)
 	except:
 		return render_template("profile.html")
 	return render_template("profile.html")
@@ -44,6 +46,8 @@ def get_card_one(ticker):
 		front['About'] = ' '.join(re.split(r'(?<=[.:])\s', response['Description'])[:1])
 		front['Location'] = response['Address'].split(",")[1].strip() + ", " + response['Address'].split(",")[2].strip()
 		front["Industry"] = response['Sector']
+		from .csvread import latest_close
+		front['CurrPrice'] = latest_close(ticker)
 	except:
 		pass
 	return front

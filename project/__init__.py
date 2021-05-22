@@ -8,6 +8,14 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
+    # # Create public URL for localhost:5000 so phone can access undeployed app
+    # def start_ngrok():
+    #   from pyngrok import ngrok
+    #   url = ngrok.connect(5000).public_url
+    #   print(url)
+
+    # start_ngrok()
+
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
