@@ -65,9 +65,9 @@ function buildPlot() {
     // drawChart(header, operatingIncome, dates, 'plot2')
     // header=[name, display_year, "Net Income"]
     // drawChart(header, netIncome, dates, 'plot3');
-    drawDonutChart('donut1', gpmAvg, 'Gross Profit Margin');
-    // drawDonutChart("#donut2", opexAvg, width, height, ".2em");
-    })
+    drawDonutChart('donut1', gpmAvg, '1');
+    drawDonutChart('donut2', opexAvg, '2');
+      })
 }
   function drawChart(headerArr, revenueArr, dateArr, id) {
     //Trace the chart
@@ -145,12 +145,11 @@ var pieData = [
   {
     value: percent,
     color: '#1607ec',
-    // label: 'Credits Earned'
- },
+   },
  {
     value: totalAvail - percent,
     color: '#ff0000',
-    // label: 'Total Credits Available'
+
  },
 ];
 
@@ -158,16 +157,14 @@ var pieData = [
 $(document).ready(function(){
   
    //activate chart.js  
-   context= document.getElementById(element).getContext('2d');
+   context = document.getElementById(element).getContext('2d');
   var skillsChart = new Chart(context).Doughnut(pieData, {
-    
     //options defined
   	showTooltips: false,
     //segmentShowStroke: false,
     responsive: true,
     percentageInnerCutout: 60,
-    //animation: false,
-    animationEasing: 'easeOutQuart',
+    animationEasing: 'easeOutQuint',
     animateScale: false,
     //animationSteps: 80,
     
@@ -175,24 +172,20 @@ $(document).ready(function(){
         var id = '#' + element;
         var canvasWidthvar = $(id).width();
         var canvasHeight = $(id).height();
-        var constant = 90;
+        var constant = 85;
+        console.log("canvaswid : ",canvasWidthvar)
+        console.log("canvasht : ",canvasHeight)
         var fontsize = (canvasHeight/constant).toFixed(2);
-        //ctx.font="2.8em Verdana";
         console.log("fontsize :", fontsize);
         context.font=fontsize +"em impact";
         context.textBaseline="middle"; 
-        // context.strokeText(text);
-        // var total = 0;
-        // $.each(pieData,function() {
-        //     total += parseInt(this.value,10);
-        // });
-        // var tpercentage = ((pieData[0].value/total)*100).toFixed(1)+"%";
+      //Print text in the center of the chart
         var tpercentage = (pieData[0].value).toFixed(1)+"%";
         var textWidth = context.measureText(tpercentage).width;
-        
-         var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
-         context.fillStyle = "#1607ec";
-          context.fillText(tpercentage, txtPosx, canvasHeight/2);
+        var txtPosx = Math.round((canvasWidthvar - textWidth)/2);
+        console.log("tPosx" , txtPosx)
+        context.fillStyle = "#1607ec";
+        context.fillText(tpercentage, txtPosx, canvasHeight/2);
       }
        
   
